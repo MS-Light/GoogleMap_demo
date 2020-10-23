@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         let results = realm.objects(locationdata.self)
         for a in results {
               let marker = GMSMarker()
-              marker.position = CLLocationCoordinate2D(latitude: a.longitude, longitude: a.longitude)
+              marker.position = CLLocationCoordinate2D(latitude: a.latitude, longitude: a.longitude)
               marker.map = Map
           }
     }

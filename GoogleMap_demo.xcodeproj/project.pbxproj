@@ -15,7 +15,6 @@
 		914D4249254227620060999D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 914D4248254227620060999D /* Assets.xcassets */; };
 		914D424C254227620060999D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914D424A254227620060999D /* LaunchScreen.storyboard */; };
 		CE75579F2542A4E100448BDD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75579E2542A4E100448BDD /* Data.swift */; };
-		CE7557A12542B4E800448BDD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7557A02542B4E800448BDD /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		914D424D254227620060999D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99956DEB0A101F6BB13B41B7 /* Pods_GoogleMap_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMap_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75579E2542A4E100448BDD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		CE7557A02542B4E800448BDD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,6 @@
 				914D4241254227620060999D /* SceneDelegate.swift */,
 				914D4243254227620060999D /* ViewController.swift */,
 				CE75579E2542A4E100448BDD /* Data.swift */,
-				CE7557A02542B4E800448BDD /* File.swift */,
 				914D4245254227620060999D /* Main.storyboard */,
 				914D4248254227620060999D /* Assets.xcassets */,
 				914D424A254227620060999D /* LaunchScreen.storyboard */,
@@ -229,7 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7557A12542B4E800448BDD /* File.swift in Sources */,
 				914D4244254227620060999D /* ViewController.swift in Sources */,
 				914D4240254227620060999D /* AppDelegate.swift in Sources */,
 				914D4242254227620060999D /* SceneDelegate.swift in Sources */,
