@@ -8,6 +8,8 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import CoreLocation
+import RealmSwift
 
 class ViewController: UIViewController {
     
@@ -16,8 +18,36 @@ class ViewController: UIViewController {
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
     
+    //record current position
+    @IBAction func record(_ sender: Any) {
+        var currentLoc: CLLocation!
+        currentLoc = locationManager.location
+        let mylocation = locationdata()
+        mylocation.id = mylocation.IncrementaID()
+        mylocation.latitude = currentLoc.coordinate.latitude
+        mylocation.longitude = currentLoc.coordinate.longitude
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(mylocation)
+        }
+    }
+    
+    //show marker on map
+    @IBAction func showdata(_ sender: Any) {
+        let realm = try! Realm()
+        // Read some data from the bundled Realm
+        let results = realm.objects(locationdata.self)
+        for a in results {
+              let marker = GMSMarker()
+              marker.position = CLLocationCoordinate2D(latitude: a.longitude, longitude: a.longitude)
+              marker.map = Map
+          }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         Map.delegate = self
@@ -52,32 +82,21 @@ class ViewController: UIViewController {
 }
 
 // MARK: - CLLocationManagerDelegate
-//1
 extension ViewController: CLLocationManagerDelegate {
-  // 2
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    // 3
     guard status == .authorizedWhenInUse else {
       return
     }
-    // 4
     locationManager.startUpdatingLocation()
-      
-    //5
     Map.isMyLocationEnabled = true
     Map.settings.myLocationButton = true
   }
-  
-  // 6
+
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.first else {
       return
     }
-      
-    // 7
     Map.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-      
-    // 8
     locationManager.stopUpdatingLocation()
   }
 }
