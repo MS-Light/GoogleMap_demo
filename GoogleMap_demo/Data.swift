@@ -23,7 +23,7 @@ class locationdata: Object {
     //auto increment primary key
     func IncrementaID() -> Int{
         let realm = try! Realm()
-        if let retNext = realm.objects(locationdata.self).sorted(byKeyPath: "id").first?.id {
+        if let retNext = realm.objects(locationdata.self).sorted(byKeyPath: "id").last?.id {
             return retNext + 1
         }else{
             return 1
