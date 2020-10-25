@@ -12,10 +12,11 @@ import CoreLocation
 import RealmSwift
 import MapKit
 
+
 class ViewController: UIViewController {
     
     //instandtiate a location manager
-    private var directionManager = DirectionManager()
+    var directionManager = DirectionManager()
     private let locationManager = CLLocationManager()
     var arrayPolyline = [GMSPolyline]()
     var selectedRought:String!

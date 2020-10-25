@@ -29,7 +29,7 @@ struct Route: Codable{
     let end_location: Location
     let start_address: String
     let end_address: String
-    let overview_polyline: Polyline
+    let overview_polyline: Polyline1
     let waypoint_order: [Int]
     let warnings: [String]
     
@@ -54,13 +54,13 @@ struct Steps: Codable{
     let travel_mode: String
     let start_location: Location
     let end_location: Location
-    let polyline: Polyline
+    let polyline: Polyline1
     let duration: Normal
     let html_instructions: String
     let distance: Normal
 }
 
-struct Polyline: Codable{
+struct Polyline1: Codable{
     let points: String
 }
 
