@@ -15,6 +15,7 @@ import MapKit
 class ViewController: UIViewController {
     
     //instandtiate a location manager
+    private var directionManager = DirectionManager()
     private let locationManager = CLLocationManager()
     var arrayPolyline = [GMSPolyline]()
     var selectedRought:String!
@@ -169,6 +170,7 @@ class ViewController: UIViewController {
     // MARK: Create source location and destination location so that you can pass it to the URL
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var destinationTextField: UITextField!
     
     //record current position
     @IBAction func record(_ sender: Any) {
@@ -222,7 +224,8 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         Map.delegate = self
-        
+        directionManager.delegate = self
+        destinationTextField.delegate = self
         let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
         let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
         //setMapMarkersRoute(vLoc: position1, toLoc: position2)
@@ -282,5 +285,51 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
       reverseGeocodeCoordinate(position.target)
+    }
+}
+
+
+//MARK: - DirectionManagerDelegate
+extension ViewController: DirectionManagerDelegate{
+    func didUpdateLocation(_ directionManager: DirectionManager, direction:DirectionModel){
+        DispatchQueue.main.async{
+            //change maps
+            print("here")
+            print(direction.destination.lat)
+        }
+    }
+    func didFailWithError(_ error: Error) {
+        print(error)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate{
+
+    @IBAction func searchPressed(_ sender: UIButton) {
+        destinationTextField.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        destinationTextField.endEditing(true)
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != ""{
+            return true
+        }else{
+            textField.placeholder = "Type in the Destination"
+            return false
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        if let destination = destinationTextField.text{
+            directionManager.fetchDirection(origin: address.text ?? "", destination: destination)
+        }
+
+        destinationTextField.text = ""
     }
 }

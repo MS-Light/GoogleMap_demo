@@ -14,6 +14,7 @@
 		914D4247254227620060999D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914D4245254227620060999D /* Main.storyboard */; };
 		914D4249254227620060999D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 914D4248254227620060999D /* Assets.xcassets */; };
 		914D424C254227620060999D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914D424A254227620060999D /* LaunchScreen.storyboard */; };
+		9173CB8925456FB500CC3612 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 9173CB8825456FB500CC3612 /* Model */; };
 		CE75579F2542A4E100448BDD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75579E2542A4E100448BDD /* Data.swift */; };
 		CE9A234125433E8900EBB384 /* virus.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9A234025433E8900EBB384 /* virus.png */; };
 		CE9A234325434ADD00EBB384 /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A234225434ADD00EBB384 /* Polyline.swift */; };
@@ -30,6 +31,7 @@
 		914D4248254227620060999D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		914D424B254227620060999D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		914D424D254227620060999D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9173CB8825456FB500CC3612 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		99956DEB0A101F6BB13B41B7 /* Pods_GoogleMap_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMap_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75579E2542A4E100448BDD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CE9A234025433E8900EBB384 /* virus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = virus.png; path = ../../../../Downloads/virus.png; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		914D423E254227620060999D /* GoogleMap_demo */ = {
 			isa = PBXGroup;
 			children = (
+				9173CB8825456FB500CC3612 /* Model */,
 				914D423F254227620060999D /* AppDelegate.swift */,
 				914D4241254227620060999D /* SceneDelegate.swift */,
 				CE9A234225434ADD00EBB384 /* Polyline.swift */,
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9173CB8925456FB500CC3612 /* Model in Resources */,
 				914D424C254227620060999D /* LaunchScreen.storyboard in Resources */,
 				CE9A234125433E8900EBB384 /* virus.png in Resources */,
 				914D4249254227620060999D /* Assets.xcassets in Resources */,
