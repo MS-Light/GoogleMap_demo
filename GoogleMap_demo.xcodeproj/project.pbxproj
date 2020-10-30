@@ -20,7 +20,6 @@
 		9173CB9A254572F900CC3612 /* DirectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9173CB96254572F900CC3612 /* DirectionData.swift */; };
 		CE75579F2542A4E100448BDD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75579E2542A4E100448BDD /* Data.swift */; };
 		CE9A234125433E8900EBB384 /* virus.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9A234025433E8900EBB384 /* virus.png */; };
-		CE9A234325434ADD00EBB384 /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A234225434ADD00EBB384 /* Polyline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		99956DEB0A101F6BB13B41B7 /* Pods_GoogleMap_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMap_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75579E2542A4E100448BDD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CE9A234025433E8900EBB384 /* virus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = virus.png; path = ../../../../Downloads/virus.png; sourceTree = "<group>"; };
-		CE9A234225434ADD00EBB384 /* Polyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +78,6 @@
 				9173CB92254572B200CC3612 /* Model */,
 				914D423F254227620060999D /* AppDelegate.swift */,
 				914D4241254227620060999D /* SceneDelegate.swift */,
-				CE9A234225434ADD00EBB384 /* Polyline.swift */,
 				914D4243254227620060999D /* ViewController.swift */,
 				CE75579E2542A4E100448BDD /* Data.swift */,
 				914D4245254227620060999D /* Main.storyboard */,
@@ -257,7 +254,6 @@
 				9173CB98254572F900CC3612 /* constant.swift in Sources */,
 				9173CB97254572F900CC3612 /* DirectionModel.swift in Sources */,
 				914D4240254227620060999D /* AppDelegate.swift in Sources */,
-				CE9A234325434ADD00EBB384 /* Polyline.swift in Sources */,
 				9173CB99254572F900CC3612 /* DirectionManager.swift in Sources */,
 				914D4242254227620060999D /* SceneDelegate.swift in Sources */,
 				CE75579F2542A4E100448BDD /* Data.swift in Sources */,

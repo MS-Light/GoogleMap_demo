@@ -21,153 +21,7 @@ class ViewController: UIViewController {
     var arrayPolyline = [GMSPolyline]()
     var selectedRought:String!
     
-    func setMapMarkersRoute(vLoc: CLLocationCoordinate2D, toLoc: CLLocationCoordinate2D) {
-        //add the markers for the 2 locations
-        let markerTo = GMSMarker.init(position: toLoc)
-        markerTo.map = Map
-        let vMarker = GMSMarker.init(position: vLoc)
-        vMarker.map = Map
-        //zoom the map to show the desired area
-        var bounds = GMSCoordinateBounds()
-        bounds = bounds.includingCoordinate(vLoc)
-        bounds = bounds.includingCoordinate(toLoc)
-        self.Map.moveCamera(GMSCameraUpdate.fit(bounds))
-        //finally get the route
-        getRoute(from: vLoc, to: toLoc)
-    }
-    func getRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
-        
-        let source = MKMapItem(placemark: MKPlacemark(coordinate: from))
-        let destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
-
-        let request = MKDirections.Request()
-        request.transportType = .walking
-        request.source = source
-        request.destination = destination
-        request.requestsAlternateRoutes = false
-
-        let directions = MKDirections(request: request)
-
-        directions.calculate(completionHandler: { (response, error) in
-            if let res = response {
-                //the function to convert the result and show
-                self.show(polyline: self.googlePolylines(from: res))
-            }
-        })
-    }
-    private func googlePolylines(from response: MKDirections.Response) -> GMSPolyline {
-        let route = response.routes[0]
-        var coordinates = [CLLocationCoordinate2D](
-            repeating: kCLLocationCoordinate2DInvalid,
-            count: route.polyline.pointCount)
-        route.polyline.getCoordinates(
-            &coordinates,
-            range: NSRange(location: 0, length: route.polyline.pointCount))
-        let polyline = Polyline(coordinates: coordinates)
-        let encodedPolyline: String = polyline.encodedPolyline
-        let path = GMSPath(fromEncodedPath: encodedPolyline)
-        return GMSPolyline(path: path)
-    }
-    func show(polyline: GMSPolyline) {
-        //add style to polyline
-        polyline.strokeColor = UIColor.red
-        polyline.strokeWidth = 3
-        //add to map
-        polyline.map = Map
-    }
-    
-    /*
-    func LoadMapRoute()
-    {
-        let origin = "40.5233, -74.4587"
-        let destination = "40.5222, -74.4627"
-        let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
-        let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
-        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=YOUR_API_KEY"
-        
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!, completionHandler:
-            {
-            (data, response, error) in
-            if(error != nil)
-            {
-                print("error")
-            }
-            else
-            {
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
-                    let arrRouts = json["routes"] as! NSArray
-                    for  polyline in self.arrayPolyline
-                    {
-                        polyline.map = nil;
-                    }
-                    self.arrayPolyline.removeAll()
-                    let pathForRought:GMSMutablePath = GMSMutablePath()
-                    if (arrRouts.count == 0)
-                    {
-                        let distance:CLLocationDistance = CLLocation.init(latitude: position1.latitude, longitude: position1.longitude).distance(from: CLLocation.init(latitude: position2.latitude, longitude: position2.longitude))
-                        pathForRought.add(position1)
-                        pathForRought.add(position2)
-                        let polyline = GMSPolyline.init(path: pathForRought)
-                        self.selectedRought = pathForRought.encodedPath()
-                        polyline.strokeWidth = 5
-                        polyline.strokeColor = UIColor.blue
-                        polyline.isTappable = true
-
-                        self.arrayPolyline.append(polyline)
-
-                        if (distance > 8000000)
-                        {
-                            polyline.geodesic = false
-                        }
-                        else
-                        {
-                            polyline.geodesic = true
-                        }
-                        polyline.map = self.Map;
-                    }
-                    else
-                    {
-                        for (index, element) in arrRouts.enumerated()
-                        {
-                            let dicData:NSDictionary = element as! NSDictionary
-                            let routeOverviewPolyline = dicData["overview_polyline"] as! NSDictionary
-                            let path =  GMSPath.init(fromEncodedPath: routeOverviewPolyline["points"] as! String)
-                            let polyline = GMSPolyline.init(path: path)
-                            polyline.isTappable = true
-                            self.arrayPolyline.append(polyline)
-                            polyline.strokeWidth = 5
-                            if index == 0
-                            {
-                                self.selectedRought = routeOverviewPolyline["points"] as? String
-                                polyline.strokeColor = UIColor.blue;
-                            }
-                            else
-                            {
-                                polyline.strokeColor = UIColor.darkGray;
-                            }
-                            polyline.geodesic = true;
-                        }
-                        for po in self.arrayPolyline.reversed()
-                        {
-                            po.map = self.Map;
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
-                    {
-                        let bounds:GMSCoordinateBounds = GMSCoordinateBounds.init(path: GMSPath.init(fromEncodedPath: self.selectedRought)!)
-                        self.Map.animate(with: GMSCameraUpdate.fit(bounds))
-                    }
-                }
-                catch let error as NSError
-                {
-                    print("error:\(error)")
-                }
-            }
-        }).resume()
-    }
-    */
+   
     // MARK: Create source location and destination location so that you can pass it to the URL
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
@@ -227,6 +81,8 @@ class ViewController: UIViewController {
         Map.delegate = self
         directionManager.delegate = self
         destinationTextField.delegate = self
+        
+        
         //let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
         //let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
         //setMapMarkersRoute(vLoc: position1, toLoc: position2)
@@ -246,9 +102,10 @@ class ViewController: UIViewController {
     }
     
     
-    private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
+    private func reverseGeocodeCoordinate(_ coordinate: CLLocation) {
       let geocoder = GMSGeocoder()
-      geocoder.reverseGeocodeCoordinate(coordinate) { response, error in
+        let coordinate1:CLLocationCoordinate2D = coordinate.coordinate
+      geocoder.reverseGeocodeCoordinate(coordinate1) { response, error in
         guard let address = response?.firstResult(), let lines = address.lines else {
           return
         }
@@ -285,7 +142,8 @@ extension ViewController: CLLocationManagerDelegate {
 // MARK: - GMSMapViewDelegate
 extension ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-      reverseGeocodeCoordinate(position.target)
+        let position:CLLocation! = self.locationManager.location
+      reverseGeocodeCoordinate(position)
     }
 }
 
@@ -298,8 +156,25 @@ extension ViewController: DirectionManagerDelegate{
             self.Map.clear()
             print("here")
             print(direction.destination.lat)
-            let path = GMSPath(fromEncodedPath: direction.polyline)
-            let polyline = GMSPolyline(path: path)
+            
+            let start = GMSMarker()
+            start.position = CLLocationCoordinate2D(latitude: direction.origin.lat, longitude: direction.origin.lng)
+            start.title = "start point"
+            start.snippet = "Hi"
+            start.map = self.Map
+            start.icon = GMSMarker.markerImage(with: UIColor.green)
+            
+            let end = GMSMarker()
+            end.position = CLLocationCoordinate2D(latitude: direction.destination.lat, longitude: direction.destination.lng)
+            end.title = "end point"
+            end.snippet = "Hi"
+            end.map = self.Map
+            end.icon = GMSMarker.markerImage(with: UIColor.green)
+            
+            let path = GMSPath.init(fromEncodedPath: direction.polyline)
+            let polyline = GMSPolyline.init(path: path)
+            polyline.strokeWidth = 3
+            self.Map.animate(with: GMSCameraUpdate.fit(GMSCoordinateBounds(path: path!), withPadding: 30))
             polyline.map = self.Map
         }
     }
@@ -314,6 +189,7 @@ extension ViewController: UITextFieldDelegate{
 
     @IBAction func searchPressed(_ sender: UIButton) {
         destinationTextField.endEditing(true)
+        
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         destinationTextField.endEditing(true)
@@ -330,11 +206,25 @@ extension ViewController: UITextFieldDelegate{
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        let geocoder = CLGeocoder()
+         
         if let destination = destinationTextField.text{
+            print("hi")
+            geocoder.geocodeAddressString(destination){(place, error) in
+                if error == nil{
+                    if let myplace = place?[0]{
+                        let geo_destination = myplace.location!
+                       print(geo_destination)
+                        return
+                    }
+                }
+            }
+            
             directionManager.fetchDirection(origin: address.text ?? "", destination: destination)
         }
 
         destinationTextField.text = ""
     }
 }
+
+// Handle the user's selection.

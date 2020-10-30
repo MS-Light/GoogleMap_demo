@@ -48,6 +48,8 @@ struct Location: Codable{
 
 struct Legs: Codable{
     let duration: Normal?
+    let start_location: Location
+    let end_location: Location
     let steps: [Steps]
 }
 

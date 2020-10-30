@@ -45,8 +45,8 @@ struct DirectionManager{
         let decoder = JSONDecoder()
         do{
             let decodedData = try decoder.decode(DirectionData.self, from: directionData)
-            let origin = decodedData.routes[0].legs[0].steps[0].start_location
-            let destination = decodedData.routes[0].legs[0].steps[0].end_location
+            let origin = decodedData.routes[0].legs[0].start_location
+            let destination = decodedData.routes[0].legs[0].end_location
             let polyline = decodedData.routes[0].overview_polyline.points
             
             let direction = DirectionModel(origin: origin, destination: destination, polyline:polyline)
