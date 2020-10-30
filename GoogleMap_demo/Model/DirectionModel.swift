@@ -10,4 +10,5 @@ import Foundation
 struct DirectionModel{
     let origin: Location
     let destination: Location
+    let polyline:String
 }

@@ -227,8 +227,8 @@ class ViewController: UIViewController {
         Map.delegate = self
         directionManager.delegate = self
         destinationTextField.delegate = self
-        let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
-        let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
+        //let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
+        //let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
         //setMapMarkersRoute(vLoc: position1, toLoc: position2)
         
         
@@ -295,8 +295,12 @@ extension ViewController: DirectionManagerDelegate{
     func didUpdateLocation(_ directionManager: DirectionManager, direction:DirectionModel){
         DispatchQueue.main.async{
             //change maps
+            self.Map.clear()
             print("here")
             print(direction.destination.lat)
+            let path = GMSPath(fromEncodedPath: direction.polyline)
+            let polyline = GMSPolyline(path: path)
+            polyline.map = self.Map
         }
     }
     func didFailWithError(_ error: Error) {

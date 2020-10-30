@@ -18,7 +18,7 @@ struct DirectionManager{
     var delegate: DirectionManagerDelegate?
     
     func fetchDirection(origin: String, destination: String){
-        let url: String = "\(K.MapDirection)&origin=\(origin)&destination=\(destination)&key=\(K.apiKey)"
+        let url: String = "\(K.MapDirection)&origin=\(origin)&destination=\(destination)&mode=walking&key=\(K.apiKey)"
         let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         performRequest(urlString!)
     }
@@ -47,8 +47,9 @@ struct DirectionManager{
             let decodedData = try decoder.decode(DirectionData.self, from: directionData)
             let origin = decodedData.routes[0].legs[0].steps[0].start_location
             let destination = decodedData.routes[0].legs[0].steps[0].end_location
+            let polyline = decodedData.routes[0].overview_polyline.points
             
-            let direction = DirectionModel(origin: origin, destination: destination)
+            let direction = DirectionModel(origin: origin, destination: destination, polyline:polyline)
             return direction
         }catch{
             delegate?.didFailWithError(error)
