@@ -9,7 +9,7 @@ import Foundation
 
 struct DirectionData: Codable{
     let geocoded_waypoints: [Waypoints]
-    let route: [Route]
+    let routes: [Routes]
     
 }
 
@@ -20,23 +20,23 @@ struct Waypoints: Codable{
     
 }
 
-struct Route: Codable{
-    let bound: Bound
+struct Routes: Codable{
+    let bounds: Bounds
     let legs: [Legs]
-    let duration: Normal
-    let distance: Normal
-    let start_location: Location
-    let end_location: Location
-    let start_address: String
-    let end_address: String
+    let duration: Normal?
+    let distance: Normal?
+    let start_location: Location?
+    let end_location: Location?
+    let start_address: String?
+    let end_address: String?
     let overview_polyline: Polyline1
-    let waypoint_order: [Int]
-    let warnings: [String]
+    let waypoint_order: [Int]?
+    let warnings: [String]?
     
     
 }
 
-struct Bound: Codable{
+struct Bounds: Codable{
     let northeast: Location
     let southwest: Location
 }
@@ -47,17 +47,19 @@ struct Location: Codable{
 }
 
 struct Legs: Codable{
+    let duration: Normal?
     let steps: [Steps]
 }
 
 struct Steps: Codable{
+    let distance: Normal?
+    let duration: Normal?
     let travel_mode: String
     let start_location: Location
     let end_location: Location
     let polyline: Polyline1
-    let duration: Normal
     let html_instructions: String
-    let distance: Normal
+
 }
 
 struct Polyline1: Codable{
@@ -65,6 +67,6 @@ struct Polyline1: Codable{
 }
 
 struct Normal: Codable{
-    let value: Int
-    let text: String
+    let text: String?
+    let value: Int?
 }
