@@ -171,11 +171,13 @@ extension ViewController: DirectionManagerDelegate{
             end.map = self.Map
             end.icon = GMSMarker.markerImage(with: UIColor.green)
             
-            let path = GMSPath.init(fromEncodedPath: direction.polyline)
-            let polyline = GMSPolyline.init(path: path)
-            polyline.strokeWidth = 3
-            self.Map.animate(with: GMSCameraUpdate.fit(GMSCoordinateBounds(path: path!), withPadding: 30))
-            polyline.map = self.Map
+            for route in direction.polyline{
+                let path = GMSPath.init(fromEncodedPath: route)
+                let polyline = GMSPolyline.init(path: path)
+                polyline.strokeWidth = 3
+                self.Map.animate(with: GMSCameraUpdate.fit(GMSCoordinateBounds(path: path!), withPadding: 30))
+                polyline.map = self.Map
+            }
         }
     }
     func didFailWithError(_ error: Error) {

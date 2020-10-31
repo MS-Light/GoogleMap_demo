@@ -9,5 +9,5 @@ import Foundation
 
 struct K{
     static let MapDirection: String = "https://maps.googleapis.com/maps/api/directions/json?"
-    static let apiKey: String = "AIzaSyCjqdL7oxEBebvhM9WaDyMLQWn7NpBemEg"
+    static let apiKey: String = "Your Api key here"
 }
