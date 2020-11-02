@@ -11,6 +11,7 @@ import GooglePlaces
 import CoreLocation
 import RealmSwift
 import MapKit
+import SwiftSocket
 
 
 class ViewController: UIViewController {
@@ -27,6 +28,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var destinationTextField: UITextField!
     
+    @IBAction func sendmsg(_ sender: Any) {
+        //127.0.0.1
+        let client = TCPClient(address: "192.168.0.174", port: 80)
+        switch client.connect(timeout: 1) {
+          case .success:
+            switch client.send(string: "GET / HTTP/1.0\n\n" ) {
+              case .success:
+                guard let data = client.read(1024*10) else { return }
+
+                if let response = String(bytes: data, encoding: .utf8) {
+                  print(response)
+                }
+              case .failure(let error):
+                print(error)
+            }
+          case .failure(let error):
+            print(error)
+        }
+        
+    }
     //record current position
     @IBAction func record(_ sender: Any) {
         var currentLoc: CLLocation!
@@ -59,6 +80,28 @@ class ViewController: UIViewController {
           }
     }
     
+    func echoService(client: TCPClient) {
+        print("Newclient from:\(client.address)[\(client.port)]")
+        var d = client.read(1024*10)
+        client.send(data: d!)
+        client.close()
+    }
+
+    func testServer() {
+        let server = TCPServer(address: "127.0.0.1", port: 80)
+        switch server.listen() {
+          case .success:
+            while true {
+                if var client = server.accept() {
+                    echoService(client: client)
+                } else {
+                    print("accept error")
+                }
+            }
+          case .failure(let error):
+            print(error)
+        }
+    }
     
     
     
@@ -81,7 +124,7 @@ class ViewController: UIViewController {
         Map.delegate = self
         directionManager.delegate = self
         destinationTextField.delegate = self
-        
+        testServer()
         
         //let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
         //let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
