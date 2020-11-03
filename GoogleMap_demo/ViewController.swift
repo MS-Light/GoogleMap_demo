@@ -27,27 +27,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var destinationTextField: UITextField!
-    
-    @IBAction func sendmsg(_ sender: Any) {
-        //127.0.0.1
-        let client = TCPClient(address: "192.168.0.174", port: 80)
-        switch client.connect(timeout: 1) {
-          case .success:
-            switch client.send(string: "GET / HTTP/1.0\n\n" ) {
-              case .success:
-                guard let data = client.read(1024*10) else { return }
-
-                if let response = String(bytes: data, encoding: .utf8) {
-                  print(response)
-                }
-              case .failure(let error):
-                print(error)
-            }
-          case .failure(let error):
-            print(error)
+    let client = Client(host:"192.168.0.174" , port: 80)
+    let server = Server(port: 80)
+    @IBAction func Startclient(_ sender: Any) {
+        DispatchQueue.global().async {
+            self.client.start()
+            let data = Data("hi".utf8)
+            self.client.connection.send(data: data)
         }
-        
     }
+    
+    @IBAction func Stopclient(_ sender: Any) {
+        client.stop()
+    }
+    
+    @IBAction func Startserver(_ sender: Any) {
+        DispatchQueue.global().async {
+            try! self.server.start()
+        }
+    }
+
+    @IBAction func Sropserver(_ sender: Any) {
+        server.stop()
+    }
+    
     //record current position
     @IBAction func record(_ sender: Any) {
         var currentLoc: CLLocation!
@@ -79,29 +82,34 @@ class ViewController: UIViewController {
             //marker.icon = self.imageWithImage(image: UIImage(named: "virus.png")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
           }
     }
-    
+    /*
     func echoService(client: TCPClient) {
         print("Newclient from:\(client.address)[\(client.port)]")
-        var d = client.read(1024*10)
+        let d = client.read(1024*10)
         client.send(data: d!)
         client.close()
     }
-
+    
     func testServer() {
-        let server = TCPServer(address: "127.0.0.1", port: 80)
+        let server = TCPServer(address: "192.168.0.174", port: 80)
+        sleep(10)
+        print("server listen")
+        sleep(3)
         switch server.listen() {
           case .success:
             while true {
-                if var client = server.accept() {
+                if let client = server.accept(timeout:1000) {
                     echoService(client: client)
                 } else {
                     print("accept error")
                 }
             }
           case .failure(let error):
+            print("server failed")
             print(error)
         }
     }
+    */
     
     
     
@@ -124,24 +132,12 @@ class ViewController: UIViewController {
         Map.delegate = self
         directionManager.delegate = self
         destinationTextField.delegate = self
-        testServer()
-        
-        //let position1 = CLLocationCoordinate2D(latitude: 40.5233, longitude: -74.4587)
-        //let position2 = CLLocationCoordinate2D(latitude: 40.5221, longitude: -74.4627)
-        //setMapMarkersRoute(vLoc: position1, toLoc: position2)
-        
-        
-        /*
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        */
-        // Do any additional setup after loading the view.
+        //testServer()
+        let servertask = DispatchQueue(label: "server")
+          servertask.async {
+           // Add your serial task
+          
+          }
     }
     
     
@@ -185,8 +181,9 @@ extension ViewController: CLLocationManagerDelegate {
 // MARK: - GMSMapViewDelegate
 extension ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        let position:CLLocation! = self.locationManager.location
-      reverseGeocodeCoordinate(position)
+        if let position:CLLocation = self.locationManager.location {
+            reverseGeocodeCoordinate(position)
+        }
     }
 }
 

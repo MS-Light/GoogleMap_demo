@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3e0-0P-Erz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,17 +21,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bye-FF-1YH" customClass="GMSMapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="691.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozY-Jb-I3V">
-                                        <rect key="frame" x="186.5" y="711.5" width="41.5" height="20.5"/>
+                                        <rect key="frame" x="186.5" y="652" width="41.5" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jPn-AG-nxd">
-                                        <rect key="frame" x="20" y="752" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="672" width="374" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-i3-KHj">
                                                 <rect key="frame" x="0.0" y="0.5" width="40" height="39"/>
@@ -61,6 +62,34 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cX6-a3-o8D">
+                                        <rect key="frame" x="168" y="732" width="78" height="0.0"/>
+                                        <state key="normal" title="Start Client"/>
+                                        <connections>
+                                            <action selector="Startclient:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8FA-t9-l27"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P81-iD-PWJ">
+                                        <rect key="frame" x="167" y="752" width="80" height="0.0"/>
+                                        <state key="normal" title="Stop Client "/>
+                                        <connections>
+                                            <action selector="Stopclient:" destination="BYZ-38-t0r" eventType="touchUpInside" id="flR-Tq-DhA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3I0-26-eL8">
+                                        <rect key="frame" x="165.5" y="772" width="83" height="0.0"/>
+                                        <state key="normal" title="Start Server"/>
+                                        <connections>
+                                            <action selector="Startserver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IOa-om-kAN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIt-Ec-etG">
+                                        <rect key="frame" x="166.5" y="792" width="81" height="0.0"/>
+                                        <state key="normal" title="Stop Server"/>
+                                        <connections>
+                                            <action selector="Sropserver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lu6-9g-4uI"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="142" translatesAutoresizingMaskIntoConstraints="NO" id="doT-gZ-Zcj">
                                         <rect key="frame" x="73.5" y="812" width="267" height="30"/>
                                         <subviews>
@@ -90,14 +119,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Bye-FF-1YH" secondAttribute="trailing" id="kMG-N3-S9s"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp9-Y7-wm2">
-                                <rect key="frame" x="184" y="841" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="sendmsg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VbU-II-Qfm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -141,24 +162,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOx-ex-Kig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3057.971014492754" y="93.75"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lFd-hP-dpo">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3e0-0P-Erz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3SE-dN-VEY">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fad-Yi-JRO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hdZ-2s-4Mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="95.652173913043484" y="93.75"/>
         </scene>
     </scenes>
     <resources>
