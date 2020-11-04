@@ -85,7 +85,7 @@ class ClientConnection {
         self.nwConnection.cancel()
         if let didStopCallback = self.didStopCallback {
             self.didStopCallback = nil
-            didStopCallback(error)
+//            didStopCallback(error)
         }
     }
 }

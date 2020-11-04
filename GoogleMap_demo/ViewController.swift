@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var destinationTextField: UITextField!
-    let client = Client(host:"192.168.0.174" , port: 80)
+    let client = Client(host:"192.168.0.126" , port: 80)
     let server = Server(port: 80)
     @IBAction func Startclient(_ sender: Any) {
         DispatchQueue.global().async {
