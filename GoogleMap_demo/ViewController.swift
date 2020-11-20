@@ -11,7 +11,6 @@ import GooglePlaces
 import CoreLocation
 import RealmSwift
 import MapKit
-import SwiftSocket
 
 
 class ViewController: UIViewController {
@@ -22,7 +21,13 @@ class ViewController: UIViewController {
     var arrayPolyline = [GMSPolyline]()
     var selectedRought:String!
     
-   
+    @IBAction func navigation(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+
+        let tableview = storyBoard.instantiateViewController(withIdentifier: "TableView") as! TableView
+        self.present(tableview, animated:true, completion:nil)
+    }
+    
     // MARK: Create source location and destination location so that you can pass it to the URL
     @IBOutlet weak var Map: GMSMapView!
     @IBOutlet weak var address: UILabel!
@@ -59,7 +64,7 @@ class ViewController: UIViewController {
         mylocation.id = mylocation.IncrementaID()
         mylocation.latitude = currentLoc.coordinate.latitude
         mylocation.longitude = currentLoc.coordinate.longitude
-        
+        mylocation.specimenDescription = self.address.text!
         let realm = try! Realm()
         try! realm.write {
             realm.add(mylocation)
@@ -77,8 +82,22 @@ class ViewController: UIViewController {
               let marker = GMSMarker()
             print(a.latitude)
             print(a.longitude)
+            print(a.specimenDescription)
               marker.position = CLLocationCoordinate2D(latitude: a.latitude, longitude: a.longitude)
               marker.map = Map
+              let number = Int.random(in: 0...10)
+              marker.title = "name"
+              marker.snippet = "infect_no is"+String(number)
+              marker.opacity = 0.6
+            if(number < 2){
+                marker.icon = GMSMarker.markerImage(with: .orange)
+            }
+            if(number < 5){
+                marker.icon = GMSMarker.markerImage(with: .red)
+            }
+            if(number < 5){
+                marker.icon = GMSMarker.markerImage(with: .purple)
+            }
             //marker.icon = self.imageWithImage(image: UIImage(named: "virus.png")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
           }
     }

@@ -10,6 +10,6 @@ target 'GoogleMap_demo' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
-  pod 'SwiftSocket'
+  pod 'SwipeCellKit'
 
 end

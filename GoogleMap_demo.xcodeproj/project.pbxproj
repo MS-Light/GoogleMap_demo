@@ -24,7 +24,36 @@
 		CEC2D5022551EE9A00C13233 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2D5012551EE9A00C13233 /* ServerConnection.swift */; };
 		CEC2D5042551EFF000C13233 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2D5032551EFF000C13233 /* ClientConnection.swift */; };
 		CEC2D5062551F03900C13233 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2D5052551F03900C13233 /* Client.swift */; };
+		CEC2D50E2553E5F400C13233 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2D50D2553E5F400C13233 /* ShareViewController.swift */; };
+		CEC2D5112553E5F400C13233 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC2D50F2553E5F400C13233 /* MainInterface.storyboard */; };
+		CEC2D5152553E5F400C13233 /* share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEC2D50B2553E5F400C13233 /* share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CECBDC8A255EF21C007AEA70 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBDC89255EF21C007AEA70 /* item.swift */; };
+		CECBDC8C256665C0007AEA70 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBDC8B256665C0007AEA70 /* TableView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEC2D5132553E5F400C13233 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 914D4234254227620060999D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEC2D50A2553E5F400C13233;
+			remoteInfo = share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEC2D5192553E5F400C13233 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEC2D5152553E5F400C13233 /* share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		44DEB8CFBF3F5C6989CFD2D6 /* Pods-GoogleMap_demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMap_demo.release.xcconfig"; path = "Target Support Files/Pods-GoogleMap_demo/Pods-GoogleMap_demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -48,6 +77,12 @@
 		CEC2D5012551EE9A00C13233 /* ServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		CEC2D5032551EFF000C13233 /* ClientConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
 		CEC2D5052551F03900C13233 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		CEC2D50B2553E5F400C13233 /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC2D50D2553E5F400C13233 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		CEC2D5102553E5F400C13233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CEC2D5122553E5F400C13233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECBDC89255EF21C007AEA70 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
+		CECBDC8B256665C0007AEA70 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +94,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEC2D5082553E5F400C13233 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				914D423E254227620060999D /* GoogleMap_demo */,
+				CEC2D50C2553E5F400C13233 /* share */,
 				914D423D254227620060999D /* Products */,
 				D2DB25EC9EB4B3C8A7E14608 /* Pods */,
 				9CABC5AC32B63D2199360B3E /* Frameworks */,
@@ -76,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				914D423C254227620060999D /* GoogleMap_demo.app */,
+				CEC2D50B2553E5F400C13233 /* share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +130,8 @@
 				9173CB92254572B200CC3612 /* Model */,
 				914D423F254227620060999D /* AppDelegate.swift */,
 				914D4241254227620060999D /* SceneDelegate.swift */,
+				CECBDC8B256665C0007AEA70 /* TableView.swift */,
+				CECBDC89255EF21C007AEA70 /* item.swift */,
 				914D4243254227620060999D /* ViewController.swift */,
 				CEC2D5052551F03900C13233 /* Client.swift */,
 				CEC2D5012551EE9A00C13233 /* ServerConnection.swift */,
@@ -120,6 +166,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CEC2D50C2553E5F400C13233 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				CEC2D50D2553E5F400C13233 /* ShareViewController.swift */,
+				CEC2D50F2553E5F400C13233 /* MainInterface.storyboard */,
+				CEC2D5122553E5F400C13233 /* Info.plist */,
+			);
+			path = share;
+			sourceTree = "<group>";
+		};
 		D2DB25EC9EB4B3C8A7E14608 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,15 +198,34 @@
 				914D423A254227620060999D /* Resources */,
 				348A51D0BDDC3D6BCAB2777B /* [CP] Copy Pods Resources */,
 				3DB604DAA4E45A2FFF21A037 /* [CP] Embed Pods Frameworks */,
+				CEC2D5192553E5F400C13233 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEC2D5142553E5F400C13233 /* PBXTargetDependency */,
 			);
 			name = GoogleMap_demo;
 			productName = GoogleMap_demo;
 			productReference = 914D423C254227620060999D /* GoogleMap_demo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CEC2D50A2553E5F400C13233 /* share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC2D5162553E5F400C13233 /* Build configuration list for PBXNativeTarget "share" */;
+			buildPhases = (
+				CEC2D5072553E5F400C13233 /* Sources */,
+				CEC2D5082553E5F400C13233 /* Frameworks */,
+				CEC2D5092553E5F400C13233 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = share;
+			productName = share;
+			productReference = CEC2D50B2553E5F400C13233 /* share.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -158,11 +233,14 @@
 		914D4234254227620060999D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					914D423B254227620060999D = {
 						CreatedOnToolsVersion = 12.1;
+					};
+					CEC2D50A2553E5F400C13233 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -180,6 +258,7 @@
 			projectRoot = "";
 			targets = (
 				914D423B254227620060999D /* GoogleMap_demo */,
+				CEC2D50A2553E5F400C13233 /* share */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +272,14 @@
 				CE9A234125433E8900EBB384 /* virus.png in Resources */,
 				914D4249254227620060999D /* Assets.xcassets in Resources */,
 				914D4247254227620060999D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEC2D5092553E5F400C13233 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC2D5112553E5F400C13233 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,11 +350,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				914D4244254227620060999D /* ViewController.swift in Sources */,
+				CECBDC8C256665C0007AEA70 /* TableView.swift in Sources */,
 				9173CB98254572F900CC3612 /* constant.swift in Sources */,
 				CEC2D5062551F03900C13233 /* Client.swift in Sources */,
 				9173CB97254572F900CC3612 /* DirectionModel.swift in Sources */,
 				914D4240254227620060999D /* AppDelegate.swift in Sources */,
 				9173CB99254572F900CC3612 /* DirectionManager.swift in Sources */,
+				CECBDC8A255EF21C007AEA70 /* item.swift in Sources */,
 				914D4242254227620060999D /* SceneDelegate.swift in Sources */,
 				CE75579F2542A4E100448BDD /* Data.swift in Sources */,
 				CEC2D5042551EFF000C13233 /* ClientConnection.swift in Sources */,
@@ -277,7 +366,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEC2D5072553E5F400C13233 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC2D50E2553E5F400C13233 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEC2D5142553E5F400C13233 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEC2D50A2553E5F400C13233 /* share */;
+			targetProxy = CEC2D5132553E5F400C13233 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		914D4245254227620060999D /* Main.storyboard */ = {
@@ -294,6 +399,14 @@
 				914D424B254227620060999D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CEC2D50F2553E5F400C13233 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC2D5102553E5F400C13233 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -350,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -405,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -419,12 +532,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6817C96BC3A59F0434D7378E /* Pods-GoogleMap_demo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZDQC76VPWK;
 				INFOPLIST_FILE = GoogleMap_demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,18 +554,59 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44DEB8CFBF3F5C6989CFD2D6 /* Pods-GoogleMap_demo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZDQC76VPWK;
 				INFOPLIST_FILE = GoogleMap_demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "RUyj.GoogleMap-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CEC2D5172553E5F400C13233 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZDQC76VPWK;
+				INFOPLIST_FILE = share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RUyj.GoogleMap-demo.share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEC2D5182553E5F400C13233 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZDQC76VPWK;
+				INFOPLIST_FILE = share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RUyj.GoogleMap-demo.share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -474,6 +629,15 @@
 			buildConfigurations = (
 				914D4251254227620060999D /* Debug */,
 				914D4252254227620060999D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEC2D5162553E5F400C13233 /* Build configuration list for PBXNativeTarget "share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC2D5172553E5F400C13233 /* Debug */,
+				CEC2D5182553E5F400C13233 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
